@@ -1,8 +1,8 @@
 /* ============================================================
    BASE
    One typeface throughout (Hanken Grotesk). Hierarchy comes from
-   weight and spacing, not from swapping fonts — so nothing feels
-   jarring. Sizes stay close together on purpose.
+   weight and spacing, not from swapping fonts. Sizes stay close
+   together on purpose so nothing feels jarring.
    ============================================================ */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -51,7 +51,6 @@ a:hover { text-decoration: underline; }
 
 img { max-width: 100%; display: block; }
 
-/* small type scale — used across sidebar + sections */
 .eyebrow {
   font-size: .72rem;
   letter-spacing: .14em;

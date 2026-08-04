@@ -1,44 +1,70 @@
 # diegoguzman.net
 
-Personal academic site. Plain static files — no build step. GitHub Pages
-serves it as-is; edit a file, commit, push, and it's live.
+Personal academic site. `index.html` is just a table of contents — it pulls
+each section in from its own file. GitHub Pages stitches them together for you
+(it runs Jekyll automatically), so there's no build step on your end: edit a
+file, commit, push, and it's live.
 
 ## Structure
 
 ```
 .
-├── index.html              # all page content, top to bottom
-├── CNAME                    # custom domain (diegoguzman.net) — don't delete
+├── index.html                     # the "table of contents" — one line per section
+├── _config.yml                    # minimal Jekyll config (rarely touched)
+├── CNAME                          # custom domain (diegoguzman.net) — don't delete
 ├── README.md
+├── _includes/                     # every piece of the page lives here
+│   ├── head.html                  # <head>: title, fonts, stylesheet links
+│   ├── header.html                # top nav + theme switcher
+│   ├── sidebar.html               # photo, name, contact, links, interests
+│   ├── footer.html
+│   └── sections/
+│       ├── about.html
+│       ├── research.html
+│       ├── publications.html
+│       ├── awards.html
+│       ├── teaching.html
+│       └── service.html
 └── assets/
-    ├── css/
-    │   ├── themes.css       # the three soft colour palettes
-    │   ├── base.css         # fonts, type sizes, resets
-    │   └── layout.css       # layout + components
-    ├── js/
-    │   └── main.js          # theme switcher + name easter egg
-    ├── img/
-    │   └── profile.jpg      # ← add your photo here (184×184 or larger, square)
-    └── cv/
-        └── Diego_Guzman_CV.pdf   # ← replace with your latest CV
+    ├── css/  themes.css · base.css · layout.css
+    ├── js/   main.js
+    ├── img/  profile.jpg          # ← add your photo here (square)
+    └── cv/   Diego_Guzman_CV.pdf  # ← replace with your latest CV
 ```
+
+## How the pieces connect
+
+`index.html` contains lines like:
+
+```liquid
+{% include sections/about.html %}
+```
+
+Each of those loads one file from `_includes/`. To change what's on the page,
+you open the matching file — you almost never touch `index.html` itself.
 
 ## Common edits
 
-- **Add a publication:** in `index.html`, find the Publications section and copy
-  one `<li class="entry"> … </li>` block. Same pattern works for Awards.
+- **Edit a section** (e.g. About): open `_includes/sections/about.html`.
+- **Add a section:** create `_includes/sections/newthing.html`, then add
+  `{% include sections/newthing.html %}` to `index.html` where you want it.
+- **Add a publication or award:** in that section's file, copy one
+  `<li class="entry"> … </li>` block.
 - **Update your CV:** drop the new PDF in `assets/cv/`. If you rename it, update
-  the two `assets/cv/…pdf` links in `index.html` (the nav and the sidebar).
-- **Add your photo:** save it as `assets/img/profile.jpg`. Until you do, a
-  placeholder avatar shows automatically.
+  the `assets/cv/…pdf` links in `_includes/header.html` and `_includes/sidebar.html`.
+- **Add your photo:** save it as `assets/img/profile.jpg` (a placeholder shows until then).
 - **Change the default colour:** edit `data-theme="sand"` on the `<html>` tag in
-  `index.html` (options: `sand`, `sage`, `mist`). Visitors can switch live with
-  the dots in the header.
-- **Retune a colour:** edit the hex values in `assets/css/themes.css`.
-- **Fix the LinkedIn / GitHub links:** they're `#` placeholders in the sidebar of
-  `index.html` — paste your real URLs.
+  `index.html` (options: `sand`, `sage`, `mist`). Visitors can also switch live.
+- **Fix LinkedIn / GitHub links:** they're `#` placeholders in `_includes/sidebar.html`.
 
 ## Preview locally (optional)
 
-From this folder, run any static server, e.g. `python3 -m http.server`, then
-open http://localhost:8000. Opening `index.html` directly also works.
+You don't need to — pushing to GitHub shows you the real thing. But if you want a
+local preview with the includes assembled, you need Jekyll:
+
+```
+gem install bundler jekyll
+jekyll serve
+```
+
+then open http://localhost:4000.

@@ -9,7 +9,6 @@
   var root = document.documentElement;
   var btns = document.querySelectorAll('.themes button');
 
-  // restore a saved theme if there is one (ignored in sandboxed previews)
   try {
     var saved = localStorage.getItem('theme');
     if (saved) setTheme(saved);
@@ -27,7 +26,6 @@
     b.addEventListener('click', function () { setTheme(b.dataset.set); });
   });
 
-  // easter egg: tap the name for a soft confetti puff
   var colors = ['#A08968', '#86977E', '#8291A0', '#C7B299', '#9FB196'];
   var brand = document.getElementById('brand');
   if (brand) {
