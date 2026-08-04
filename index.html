@@ -1,0 +1,33 @@
+---
+# This blank front matter tells GitHub Pages (Jekyll) to assemble the
+# includes below. Each line pulls in one file — that's the whole page.
+---
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+
+  {% include header.html %}
+
+  <div class="wrap" id="top">
+
+    {% include sidebar.html %}
+
+    <main>
+      {% include sections/about.html        %}
+      {% include sections/research.html     %}
+      {% include sections/publications.html %}
+      {% include sections/awards.html       %}
+      {% include sections/teaching.html     %}
+      {% include sections/service.html      %}
+    </main>
+
+  </div>
+
+  {% include footer.html %}
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
