@@ -4,11 +4,12 @@
    else needs to change.
    ============================================================ */
 :root {
-  --paper:       #F0F3ED;
-  --card:        #F9FBF6;
-  --ink:         #2E322B;
-  --muted:       #6F7568;
-  --accent:      #86977E;
-  --accent-soft: #E2E8DB;
-  --line:        #E1E5D9;
+  --paper:       #FAF9F6;  /* page background — soft, neutral near-white */
+  --card:        #FFFFFF;  /* raised surfaces (the "Currently" box)      */
+  --ink:         #26262B;  /* main text — dark, near-black               */
+  --muted:       #6C6C72;  /* secondary / grey text                     */
+  --accent:      #4F6C8E;  /* links & accents — quiet slate blue        */
+  --accent-soft: #E6EAF0;  /* pale accent — hover chips, photo shadow   */
+  --line:        #ECEAE4;  /* hairline borders                          */
 }
+ 
