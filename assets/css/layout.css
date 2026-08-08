@@ -1,4 +1,8 @@
+/* ============================================================
+   LAYOUT + COMPONENTS
+   ============================================================ */
 
+/* ---------- header / nav ---------- */
 .nav {
   position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; justify-content: space-between;
@@ -126,7 +130,7 @@ main p { max-width: 64ch; }
 .entry .title { font-weight: 600; font-size: 1rem; line-height: 1.35; color: var(--ink); }
 
 /* Research reads as experience, not a ranking — drop its numbers */
-#research .entry::before { content: none; }
+#research .entry::before { content: none !important; display: none !important; }
 #research .entry { padding-left: 0; }
 
 a.title:hover { color: var(--accent); }
